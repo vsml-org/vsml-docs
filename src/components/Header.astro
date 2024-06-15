@@ -1,0 +1,57 @@
+---
+import {
+  bluePrimaryColor,
+  whiteColor,
+  blackColor,
+  maxWidth,
+} from "./DefineVars.astro";
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<style define:vars={{ bluePrimaryColor, whiteColor, blackColor, maxWidth }}>
+  .header-parent {
+    position: sticky;
+    top: 0;
+    background-color: var(--whiteColor);
+    height: 62px;
+    display: flex;
+    padding: 8px 20px;
+    box-sizing: border-box;
+    border-bottom: 2px solid var(--bluePrimaryColor);
+    box-shadow: 0 0px 10px var(--blackColor);
+    justify-content: center;
+  }
+  .header {
+    width: 100%;
+    max-width: var(--maxWidth);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .link-wrapper {
+    display: flex;
+    gap: 4px;
+  }
+  .top-link {
+    display: inline-block;
+    height: 100%;
+  }
+  .logo {
+    height: 100%;
+  }
+</style>
+
+<div class="header-parent">
+  <div class="header">
+    <a href="/" class="top-link">
+      <img class="logo" src="/wide_logo_with_title_revert.png" />
+    </a>
+    <div class="link-wrapper">
+      <HeaderLink link="/docs/tags" display="タグドキュメント" />
+      <HeaderLink link="/docs/property" display="プロパティドキュメント" />
+      <HeaderLink link="/how-to-use" display="導入" />
+      <HeaderLink link="/tutorial" display="チュートリアル" />
+      <HeaderLink link="/example" display="使用例" />
+    </div>
+  </div>
+</div>

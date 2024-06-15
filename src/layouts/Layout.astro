@@ -1,0 +1,38 @@
+---
+import "./layout.css";
+import Header from "../components/Header.astro";
+import { whiteColor, maxWidth } from "../components/DefineVars.astro";
+
+const { frontmatter } = Astro.props;
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:site_name" content="VSML" />
+    <meta
+      property="og:description"
+      content="XMLファイルから動画を制作する技術です。"
+    />
+    <meta property="og:image" content="https://vsml.pigeons.house/logo.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title ? title : frontmatter.title}</title>
+  </head>
+  <body style={{ backgroundColor: whiteColor }}>
+    <Header />
+    <div style={{ margin: "20px auto", maxWidth }}>
+      <slot />
+    </div>
+  </body>
+</html>
