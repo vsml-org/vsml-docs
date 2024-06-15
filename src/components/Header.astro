@@ -1,14 +1,27 @@
 ---
+import { Icon } from "astro-iconify";
 import {
   bluePrimaryColor,
   whiteColor,
+  grayLightColor,
   blackColor,
   maxWidth,
 } from "./DefineVars.astro";
 import HeaderLink from "./HeaderLink.astro";
+
+const breakPoint = "1024px";
 ---
 
-<style define:vars={{ bluePrimaryColor, whiteColor, blackColor, maxWidth }}>
+<style
+  define:vars={{
+    bluePrimaryColor,
+    whiteColor,
+    blackColor,
+    grayLightColor,
+    maxWidth,
+    breakPoint,
+  }}
+>
   .header-parent {
     position: sticky;
     top: 0;
@@ -39,6 +52,46 @@ import HeaderLink from "./HeaderLink.astro";
   .logo {
     height: 100%;
   }
+  .menu-icon {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    color: var(--bluePrimaryColor);
+    border-radius: 100px;
+    padding: 4px;
+  }
+  .menu-icon:hover {
+    background-color: var(--grayLightColor);
+  }
+  .menu {
+    background-color: var(--whiteColor);
+    border: 1px solid var(--grayLightColor);
+    padding: 4px;
+    border-radius: 4px;
+    position: fixed;
+    top: 52px;
+    right: 8px;
+    display: none;
+  }
+  .menu-visible {
+    display: block;
+  }
+  @media screen and (max-width: 900px) {
+    .link-wrapper {
+      display: none;
+    }
+    .header {
+      justify-content: space-between;
+    }
+  }
+  @media screen and (min-width: 901px) {
+    .menu-wrapper {
+      display: none;
+    }
+    .menu {
+      display: none;
+    }
+  }
 </style>
 
 <div class="header-parent">
@@ -53,5 +106,21 @@ import HeaderLink from "./HeaderLink.astro";
       <HeaderLink link="/tutorial" display="チュートリアル" />
       <HeaderLink link="/example" display="使用例" />
     </div>
+    <div class="menu-wrapper">
+      <Icon class="menu-icon" name="ci:hamburger-md" />
+      <div class="menu">
+        <HeaderLink link="/docs/tags" display="タグドキュメント" />
+        <HeaderLink link="/docs/property" display="プロパティドキュメント" />
+        <HeaderLink link="/how-to-use" display="導入" />
+        <HeaderLink link="/tutorial" display="チュートリアル" />
+        <HeaderLink link="/example" display="使用例" />
+      </div>
+    </div>
   </div>
 </div>
+
+<script>
+  document.querySelector(".menu-icon")?.addEventListener("click", () => {
+    document.querySelector(".menu")?.classList.toggle("menu-visible");
+  });
+</script>

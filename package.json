@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "astro": "^4.10.1",
+    "astro-iconify": "^1.2.0",
     "typescript": "^5.4.5"
   }
 }
