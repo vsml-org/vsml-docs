@@ -1,7 +1,11 @@
 ---
-import "./entry.css";
 import Layout from "./MainLayout.astro";
-import { blueSecondaryColor, whiteColor } from "../components/DefineVars.astro";
+import {
+  blueLightColor,
+  blueSecondaryColor,
+  grayLightColor,
+  whiteColor,
+} from "../components/DefineVars.astro";
 
 interface Heading {
   depth: number;
@@ -15,6 +19,31 @@ interface Props {
 
 const { headings } = Astro.props;
 ---
+
+<style
+  is:global
+  define:vars={{ blueLightColor, grayLightColor, blueSecondaryColor }}
+>
+  .content-wrapper {
+    h1 {
+      border-bottom: 2px solid var(--blueLightColor);
+    }
+    h2 {
+      border-bottom: 1px solid var(--blueLightColor);
+    }
+    pre {
+      padding: 8px;
+      border-radius: 4px;
+    }
+    :not(pre) > code {
+      color: var(--blueSecondaryColor);
+      background-color: var(--blueLightColor);
+      padding: 4px;
+      margin: 0 2px;
+      border-radius: 2px;
+    }
+  }
+</style>
 
 <style define:vars={{ blueSecondaryColor, whiteColor }}>
   .page-wrapper {
