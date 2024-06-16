@@ -3,17 +3,19 @@
 
 # VSML コンバータの導入
 
-## Python 版(旧版)の導入
+## Python 版(旧版)
+
+### コンバータのインストール
 
 VSML コンバータは[こちら](https://github.com/PigeonsHouse/VSML/releases/latest)からダウンロードしてください。
 
 このコンバータは VSML ファイルを読み取り、FFmpeg のコマンドを生成して、OS 上の FFmpeg を呼び出すラッパーライブラリとなっていますので、FFmpeg のインストールが必要となります。
 
-[FFmpeg 公式サイト](https://ffmpeg.org/download.html)から FFmpeg v4 をダウンロードし、ヘッダーの `Latest Download` から使用する OS に合った実行ファイルをダウンロードしてください。
+[FFmpeg 公式サイト](https://ffmpeg.org/download.html)から FFmpeg の v4.x をダウンロードしてください。
 
-## VSML エンコーダの使用方法
+### VSML コンバータの使用方法
 
-エンコーダのコマンドライン引数に VSML ファイルのパスを渡すと、VSML ファイルからエンコードを行います。
+コンバータのコマンドライン引数に VSML ファイルのパスを渡すと、VSML ファイルから動画へ変換を行います。
 
 ```sh
 $ ./main video.vsml
