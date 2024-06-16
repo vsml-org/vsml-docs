@@ -9,6 +9,11 @@ const {
   summary = "XMLファイルから動画を制作する技術です。",
   thumbnailUrl = "https://vsml.pigeons.house/logo.png",
 } = Astro.props;
+
+const pageTitle = title ? title : frontmatter.title;
+
+const formattedPageTitle =
+  pageTitle === "VSML" ? pageTitle : `${pageTitle} | VSML`;
 ---
 
 <!doctype html>
@@ -28,7 +33,7 @@ const {
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <title>{title ? title : frontmatter.title}</title>
+    <title>{formattedPageTitle}</title>
   </head>
   <body style={{ backgroundColor: grayLightColor }}>
     <Header />
