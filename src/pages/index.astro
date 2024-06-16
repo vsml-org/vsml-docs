@@ -1,8 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import { whiteColor } from "../components/DefineVars.astro";
+import Layout from "../layouts/MainLayout.astro";
 ---
 
-<style>
+<style define:vars={{ whiteColor }}>
+  center {
+    padding: 20px;
+    border-radius: 4px;
+    background-color: var(--whiteColor);
+  }
   img {
     width: 400px;
     max-width: 80vw;

@@ -1,0 +1,95 @@
+---
+import "./entry.css";
+import Layout from "./MainLayout.astro";
+import { blueSecondaryColor, whiteColor } from "../components/DefineVars.astro";
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<style define:vars={{ blueSecondaryColor, whiteColor }}>
+  .page-wrapper {
+    display: flex;
+  }
+  .content-wrapper {
+    flex-grow: 1;
+    background-color: var(--whiteColor);
+    padding: 20px;
+    border-radius: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .headings-wrapper {
+    flex-shrink: 0;
+    width: 300px;
+    box-sizing: border-box;
+  }
+  .headings-sticky-wrapper {
+    padding: 16px;
+    max-height: 100vh;
+    position: sticky;
+    top: 62px;
+  }
+  .headings-wrapper {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+  }
+  .headings-wrapper a {
+    color: var(--blueSecondaryColor);
+  }
+  @media screen and (max-width: 1200px) {
+    .headings-wrapper {
+      width: 200px;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .headings-wrapper {
+      display: none;
+    }
+  }
+</style>
+
+<Layout title="導入">
+  <div class="page-wrapper">
+    <div class="content-wrapper">
+      <slot />
+    </div>
+    <div class="headings-wrapper">
+      <div class="headings-sticky-wrapper">
+        {
+          headings.map((heading) => {
+            if (heading.depth === 1) {
+              return (
+                <h4>
+                  <a href={`#${heading.slug}`}>{heading.text}</a>
+                </h4>
+              );
+            } else if (heading.depth === 2) {
+              return (
+                <h5>
+                  <a href={`#${heading.slug}`}>{heading.text}</a>
+                </h5>
+              );
+            }
+          })
+        }
+      </div>
+    </div>
+  </div>
+</Layout>

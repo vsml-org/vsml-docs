@@ -1,10 +1,14 @@
 ---
-import "./layout.css";
+import "./mainLayout.css";
 import Header from "../components/Header.astro";
-import { whiteColor, maxWidth } from "../components/DefineVars.astro";
+import { grayLightColor, maxWidth } from "../components/DefineVars.astro";
 
-const { frontmatter } = Astro.props;
-const { title } = Astro.props;
+const {
+  frontmatter,
+  title,
+  summary = "XMLファイルから動画を制作する技術です。",
+  thumbnailUrl = "https://vsml.pigeons.house/logo.png",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -15,11 +19,8 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:site_name" content="VSML" />
-    <meta
-      property="og:description"
-      content="XMLファイルから動画を制作する技術です。"
-    />
-    <meta property="og:image" content="https://vsml.pigeons.house/logo.png" />
+    <meta property="og:description" content={summary} />
+    <meta property="og:image" content={thumbnailUrl} />
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,9 +30,9 @@ const { title } = Astro.props;
     />
     <title>{title ? title : frontmatter.title}</title>
   </head>
-  <body style={{ backgroundColor: whiteColor }}>
+  <body style={{ backgroundColor: grayLightColor }}>
     <Header />
-    <div style={{ margin: "20px auto", maxWidth }}>
+    <div style={{ margin: "20px auto 40px", padding: "0 8px", maxWidth }}>
       <slot />
     </div>
   </body>
