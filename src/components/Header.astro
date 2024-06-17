@@ -8,6 +8,7 @@ import {
   maxWidth,
 } from "./DefineVars.astro";
 import HeaderLink from "./HeaderLink.astro";
+import ThemeToggleButton from "./ThemeToggleButton.astro";
 
 const breakPoint = "1024px";
 ---
@@ -40,7 +41,16 @@ const breakPoint = "1024px";
     max-width: var(--maxWidth);
     display: flex;
     align-items: center;
+    justify-content: space-between;
+  }
+  .left-header {
+    height: 100%;
+    display: flex;
+    align-items: center;
     gap: 12px;
+  }
+  .right-header {
+    display: flex;
   }
   .link-wrapper {
     display: flex;
@@ -97,24 +107,32 @@ const breakPoint = "1024px";
 
 <div class="header-parent">
   <div class="header">
-    <a href="/" class="top-link">
-      <img class="logo" src="/wide_logo_with_title_revert.png" />
-    </a>
-    <div class="link-wrapper">
-      <HeaderLink link="/docs/tags" display="タグドキュメント" />
-      <HeaderLink link="/docs/properties" display="プロパティドキュメント" />
-      <HeaderLink link="/how-to-use" display="導入" />
-      <HeaderLink link="/tutorial" display="チュートリアル" />
-      <HeaderLink link="/examples" display="使用例" />
-    </div>
-    <div class="menu-wrapper">
-      <Icon class="menu-icon" name="ci:hamburger-md" />
-      <div class="menu">
+    <div class="left-header">
+      <a href="/" class="top-link">
+        <img class="logo" src="/wide_logo_with_title_revert.png" />
+      </a>
+      <div class="link-wrapper">
         <HeaderLink link="/docs/tags" display="タグドキュメント" />
         <HeaderLink link="/docs/properties" display="プロパティドキュメント" />
         <HeaderLink link="/how-to-use" display="導入" />
         <HeaderLink link="/tutorial" display="チュートリアル" />
         <HeaderLink link="/examples" display="使用例" />
+      </div>
+    </div>
+    <div class="right-header">
+      <ThemeToggleButton />
+      <div class="menu-wrapper">
+        <Icon class="menu-icon" name="ci:hamburger-md" />
+        <div class="menu">
+          <HeaderLink link="/docs/tags" display="タグドキュメント" />
+          <HeaderLink
+            link="/docs/properties"
+            display="プロパティドキュメント"
+          />
+          <HeaderLink link="/how-to-use" display="導入" />
+          <HeaderLink link="/tutorial" display="チュートリアル" />
+          <HeaderLink link="/examples" display="使用例" />
+        </div>
       </div>
     </div>
   </div>
