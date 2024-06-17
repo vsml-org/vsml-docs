@@ -1,0 +1,144 @@
+---
+import { getCollection } from "astro:content";
+import EntryLayout from "./EntryLayout.astro";
+import {
+  whiteColor,
+  blueSecondaryColor,
+  bluePrimaryColor,
+} from "../components/DefineVars.astro";
+
+const entries = await getCollection("docs");
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  directory: string;
+  headings: Heading[];
+  slug: string;
+}
+
+const { directory, headings, slug } = Astro.props;
+---
+
+<style define:vars={{ whiteColor, blueSecondaryColor, bluePrimaryColor }}>
+  .multi-entry-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  .entries-list {
+    width: 280px;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+  .entries-sticky-list {
+    height: calc(100vh - 82px - 40px);
+    background-color: var(--whiteColor);
+    position: sticky;
+    top: 82px;
+    padding: 16px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  .entry-wrapper {
+    flex: 1;
+  }
+  .entries-list .child-item {
+    margin-left: 8px;
+    border-left: 1px solid var(--bluePrimaryColor);
+    padding-left: 8px;
+  }
+  .entries-sticky-list > div {
+    padding-bottom: 2px;
+  }
+  .entries-list a {
+    display: block;
+    width: 100%;
+    padding: 0 4px;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  .entries-list .child-item a {
+    color: var(--bluePrimaryColor);
+  }
+  .entries-list .child-item a:hover {
+    color: var(--blueSecondaryColor);
+  }
+  .entries-list .child-item.selected a {
+    color: var(--whiteColor);
+    background-color: var(--bluePrimaryColor);
+    border-radius: 4px;
+  }
+  .entries-list .index-item a {
+    font-size: 18px;
+    color: var(--blueSecondaryColor);
+    font-weight: bold;
+  }
+  .entries-list .index-item.selected a {
+    color: var(--whiteColor);
+    background-color: var(--bluePrimaryColor);
+    border-radius: 4px;
+  }
+  @media screen and (max-width: 900px) {
+    .multi-entry-wrapper {
+      flex-direction: column;
+    }
+    .entries-list,
+    .entries-sticky-list {
+      height: auto;
+      width: 100%;
+      max-height: 200px;
+      margin-bottom: 12px;
+    }
+  }
+</style>
+
+<div class="multi-entry-wrapper">
+  <div class="entries-list">
+    <div class="entries-sticky-list">
+      {
+        entries
+          .filter(
+            (entry) =>
+              entry.id.indexOf(directory + "/") !== -1 &&
+              entry.id.indexOf("index.md") !== -1
+          )
+          .map((entry) => {
+            const className = `index-item${slug.indexOf("/") === -1 ? " selected" : ""}`;
+            return (
+              <div class={className}>
+                <a href={`/docs/${directory}`}>{entry.data.title}</a>
+              </div>
+            );
+          })
+      }
+      {
+        entries
+          .filter(
+            (entry) =>
+              entry.id.indexOf(directory + "/") !== -1 &&
+              entry.id.indexOf("index.md") === -1
+          )
+          .map((entry) => {
+            const className = `child-item${slug === entry.slug ? " selected" : ""}`;
+            return (
+              <>
+                <div class={className}>
+                  <a href={`/docs/${entry.slug}`}>{entry.data.title}</a>
+                </div>
+              </>
+            );
+          })
+      }
+    </div>
+  </div>
+  <div class="entry-wrapper">
+    <EntryLayout headings={headings}>
+      <slot />
+    </EntryLayout>
+  </div>
+</div>

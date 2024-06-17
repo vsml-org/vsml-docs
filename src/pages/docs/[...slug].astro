@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import MultiEntryLayout from "../../layouts/MultiEntryLayout.astro";
+
+export async function getStaticPaths() {
+  const docsEntries = await getCollection("docs");
+  return docsEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+const directory = entry.slug.split("/")[0];
+const { slug } = Astro.params;
+console.log(slug);
+---
+
+<MainLayout title={entry.data.title}>
+  <MultiEntryLayout slug={slug} directory={directory} headings={headings}>
+    <Content />
+  </MultiEntryLayout>
+</MainLayout>
