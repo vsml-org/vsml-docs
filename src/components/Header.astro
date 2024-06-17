@@ -23,6 +23,7 @@ const breakPoint = "1024px";
   }}
 >
   .header-parent {
+    z-index: 2;
     position: sticky;
     top: 0;
     background-color: var(--whiteColor);
@@ -101,7 +102,7 @@ const breakPoint = "1024px";
     </a>
     <div class="link-wrapper">
       <HeaderLink link="/docs/tags" display="タグドキュメント" />
-      <HeaderLink link="/docs/property" display="プロパティドキュメント" />
+      <HeaderLink link="/docs/properties" display="プロパティドキュメント" />
       <HeaderLink link="/how-to-use" display="導入" />
       <HeaderLink link="/tutorial" display="チュートリアル" />
       <HeaderLink link="/examples" display="使用例" />
@@ -110,7 +111,7 @@ const breakPoint = "1024px";
       <Icon class="menu-icon" name="ci:hamburger-md" />
       <div class="menu">
         <HeaderLink link="/docs/tags" display="タグドキュメント" />
-        <HeaderLink link="/docs/property" display="プロパティドキュメント" />
+        <HeaderLink link="/docs/properties" display="プロパティドキュメント" />
         <HeaderLink link="/how-to-use" display="導入" />
         <HeaderLink link="/tutorial" display="チュートリアル" />
         <HeaderLink link="/examples" display="使用例" />
