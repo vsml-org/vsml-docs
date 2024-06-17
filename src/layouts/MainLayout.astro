@@ -1,7 +1,15 @@
 ---
 import "./mainLayout.css";
 import Header from "../components/Header.astro";
-import { grayLightColor, maxWidth } from "../components/DefineVars.astro";
+import {
+  bluePrimaryColor,
+  blueSecondaryColor,
+  grayLightColor,
+  blueDarkColor,
+  whiteColor,
+  blackColor,
+  maxWidth,
+} from "../components/DefineVars.astro";
 
 const {
   frontmatter,
@@ -33,9 +41,39 @@ const formattedPageTitle =
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <style
+      define:vars={{
+        grayLightColor,
+        blueDarkColor,
+        whiteColor,
+        blackColor,
+        bluePrimaryColor,
+        blueSecondaryColor,
+      }}
+      is:global
+    >
+      body {
+        background-color: var(--grayLightColor);
+        color: var(--blackColor);
+      }
+      .dark body {
+        background-color: var(--blueDarkColor);
+        color: var(--whiteColor);
+      }
+      a {
+        color: var(--blueSecondaryColor);
+      }
+      .dark a {
+        color: var(--bluePrimaryColor);
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+    </style>
     <title>{formattedPageTitle}</title>
   </head>
-  <body style={{ backgroundColor: grayLightColor }}>
+  <body>
     <Header />
     <div style={{ margin: "20px auto 40px", padding: "0 8px", maxWidth }}>
       <slot />

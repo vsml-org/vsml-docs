@@ -3,6 +3,7 @@ import {
   blackColor,
   blueSecondaryColor,
   blueLightColor,
+  whiteColor,
 } from "./DefineVars.astro";
 interface Props {
   link: string;
@@ -11,7 +12,9 @@ interface Props {
 const { link, display } = Astro.props;
 ---
 
-<style define:vars={{ blackColor, blueSecondaryColor, blueLightColor }}>
+<style
+  define:vars={{ blackColor, blueSecondaryColor, blueLightColor, whiteColor }}
+>
   a {
     text-decoration: none;
     color: var(--blackColor);
@@ -27,6 +30,15 @@ const { link, display } = Astro.props;
     color: var(--blueSecondaryColor);
     background-color: var(--blueLightColor);
   }
+  :global(.dark) {
+    a.header-link {
+      color: var(--whiteColor);
+    }
+    a.header-link:hover {
+      color: var(--blueLightColor);
+      background-color: var(--blueSecondaryColor);
+    }
+  }
 </style>
 
-<a href={link}>{display}</a>
+<a class="header-link" href={link}>{display}</a>

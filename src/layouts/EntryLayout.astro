@@ -1,9 +1,11 @@
 ---
 import {
   blueLightColor,
+  bluePrimaryColor,
   blueSecondaryColor,
   grayLightColor,
   whiteColor,
+  blackColor,
 } from "../components/DefineVars.astro";
 
 interface Heading {
@@ -21,7 +23,13 @@ const { headings } = Astro.props;
 
 <style
   is:global
-  define:vars={{ blueLightColor, grayLightColor, blueSecondaryColor }}
+  define:vars={{
+    blueLightColor,
+    grayLightColor,
+    bluePrimaryColor,
+    blueSecondaryColor,
+    blackColor,
+  }}
 >
   .content-wrapper {
     h1 {
@@ -44,10 +52,32 @@ const { headings } = Astro.props;
     img {
       max-width: 100%;
     }
+    a {
+      color: var(--blueSecondaryColor);
+    }
+  }
+  .dark .content-wrapper {
+    :not(pre) > code {
+      color: var(--blueLightColor);
+      background-color: var(--blueDarkColor);
+    }
+    h1,
+    h2 {
+      border-bottom-color: var(--bluePrimaryColor);
+    }
+    a {
+      color: var(--bluePrimaryColor);
+    }
   }
 </style>
 
-<style define:vars={{ blueSecondaryColor, whiteColor }}>
+<style
+  define:vars={{
+    blueSecondaryColor,
+    whiteColor,
+    blueLightColor,
+  }}
+>
   .page-wrapper {
     display: flex;
   }
@@ -80,9 +110,10 @@ const { headings } = Astro.props;
       margin: 0;
       margin-bottom: 10px;
     }
-  }
-  .headings-wrapper a {
-    color: var(--blueSecondaryColor);
+    a {
+      color: var(--blueSecondaryColor);
+      text-decoration: none;
+    }
   }
   @media screen and (max-width: 1200px) {
     .headings-wrapper {
@@ -92,6 +123,16 @@ const { headings } = Astro.props;
   @media screen and (max-width: 1000px) {
     .headings-wrapper {
       display: none;
+    }
+  }
+  :global(.dark) {
+    .content-wrapper {
+      background-color: var(--blackColor);
+    }
+    .headings-wrapper {
+      a {
+        color: var(--blueLightColor);
+      }
     }
   }
 </style>
