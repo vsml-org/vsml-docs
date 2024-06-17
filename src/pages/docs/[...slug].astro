@@ -15,7 +15,6 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 const directory = entry.slug.split("/")[0];
 const { slug } = Astro.params;
-console.log(slug);
 ---
 
 <MainLayout title={entry.data.title}>
