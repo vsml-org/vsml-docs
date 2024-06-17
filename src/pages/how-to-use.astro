@@ -1,11 +1,14 @@
 ---
 import { getEntry } from "astro:content";
 import EntryLayout from "../layouts/EntryLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 
 const howToUseEntry = await getEntry("howToUse", "index");
 const { Content, headings } = await howToUseEntry.render();
 ---
 
-<EntryLayout headings={headings}>
-  <Content />
-</EntryLayout>
+<MainLayout title="導入">
+  <EntryLayout headings={headings}>
+    <Content />
+  </EntryLayout>
+</MainLayout>

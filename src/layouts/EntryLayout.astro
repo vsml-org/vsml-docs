@@ -1,5 +1,4 @@
 ---
-import Layout from "./MainLayout.astro";
 import {
   blueLightColor,
   blueSecondaryColor,
@@ -41,6 +40,9 @@ const { headings } = Astro.props;
       padding: 4px;
       margin: 0 2px;
       border-radius: 2px;
+    }
+    img {
+      max-width: 100%;
     }
   }
 </style>
@@ -94,31 +96,29 @@ const { headings } = Astro.props;
   }
 </style>
 
-<Layout title="導入">
-  <div class="page-wrapper">
-    <div class="content-wrapper">
-      <slot />
-    </div>
-    <div class="headings-wrapper">
-      <div class="headings-sticky-wrapper">
-        {
-          headings.map((heading) => {
-            if (heading.depth === 1) {
-              return (
-                <h4>
-                  <a href={`#${heading.slug}`}>{heading.text}</a>
-                </h4>
-              );
-            } else if (heading.depth === 2) {
-              return (
-                <h5>
-                  <a href={`#${heading.slug}`}>{heading.text}</a>
-                </h5>
-              );
-            }
-          })
-        }
-      </div>
+<div class="page-wrapper">
+  <div class="content-wrapper">
+    <slot />
+  </div>
+  <div class="headings-wrapper">
+    <div class="headings-sticky-wrapper">
+      {
+        headings.map((heading) => {
+          if (heading.depth === 1) {
+            return (
+              <h4>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </h4>
+            );
+          } else if (heading.depth === 2) {
+            return (
+              <h5>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </h5>
+            );
+          }
+        })
+      }
     </div>
   </div>
-</Layout>
+</div>
