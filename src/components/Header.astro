@@ -5,6 +5,8 @@ import {
   whiteColor,
   grayLightColor,
   blackColor,
+  blueDarkColor,
+  grayColor,
   maxWidth,
 } from "./DefineVars.astro";
 import HeaderLink from "./HeaderLink.astro";
@@ -16,9 +18,11 @@ const breakPoint = "1024px";
 <style
   define:vars={{
     bluePrimaryColor,
+    blueDarkColor,
     whiteColor,
     blackColor,
     grayLightColor,
+    grayColor,
     maxWidth,
     breakPoint,
   }}
@@ -60,8 +64,12 @@ const breakPoint = "1024px";
     display: inline-block;
     height: 100%;
   }
-  .logo {
+  .logo,
+  .logo-dark {
     height: 100%;
+  }
+  .logo-dark {
+    display: none;
   }
   .menu-icon {
     width: 40px;
@@ -103,6 +111,28 @@ const breakPoint = "1024px";
       display: none;
     }
   }
+  :global(.dark) {
+    .header-parent {
+      background-color: var(--blueDarkColor);
+      border-bottom: 2px solid var(--bluePrimaryColor);
+    }
+    .logo {
+      display: none;
+    }
+    .logo-dark {
+      display: initial;
+    }
+    .menu-icon {
+      color: var(--whiteColor);
+    }
+    .menu-icon:hover {
+      background-color: var(--grayColor);
+    }
+    .menu {
+      background-color: var(--blueDarkColor);
+      border: 1px solid var(--grayColor);
+    }
+  }
 </style>
 
 <div class="header-parent">
@@ -110,6 +140,7 @@ const breakPoint = "1024px";
     <div class="left-header">
       <a href="/" class="top-link">
         <img class="logo" src="/wide_logo_with_title_revert.png" />
+        <img class="logo-dark" src="/wide_logo_with_title_transparent.png" />
       </a>
       <div class="link-wrapper">
         <HeaderLink link="/docs/tags" display="タグドキュメント" />

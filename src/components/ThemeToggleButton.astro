@@ -19,20 +19,22 @@ import {
     padding: 8px;
     border-radius: 1000px;
   }
-  :global(.dark) #themeToggle {
-    color: var(--blueLightColor);
-  }
   .sun {
     fill: var(--bluePrimaryColor);
   }
   .moon {
     fill: transparent;
   }
-  :global(.dark) .sun {
-    fill: transparent;
-  }
-  :global(.dark) .moon {
-    fill: var(--whiteColor);
+  :global(.dark) {
+    #themeToggle {
+      color: var(--blueLightColor);
+    }
+    .sun {
+      fill: transparent;
+    }
+    .moon {
+      fill: var(--whiteColor);
+    }
   }
 </style>
 

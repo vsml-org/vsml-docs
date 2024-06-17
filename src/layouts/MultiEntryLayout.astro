@@ -5,6 +5,7 @@ import {
   whiteColor,
   blueSecondaryColor,
   bluePrimaryColor,
+  blueLightColor,
 } from "../components/DefineVars.astro";
 
 const entries = await getCollection("docs");
@@ -24,7 +25,14 @@ interface Props {
 const { directory, headings, slug } = Astro.props;
 ---
 
-<style define:vars={{ whiteColor, blueSecondaryColor, bluePrimaryColor }}>
+<style
+  define:vars={{
+    whiteColor,
+    blueSecondaryColor,
+    bluePrimaryColor,
+    blueLightColor,
+  }}
+>
   .multi-entry-wrapper {
     display: flex;
     flex-direction: row;
@@ -33,6 +41,42 @@ const { directory, headings, slug } = Astro.props;
     width: 280px;
     flex-shrink: 0;
     margin-right: 8px;
+    .child-item {
+      margin-left: 8px;
+      border-left: 1px solid var(--bluePrimaryColor);
+      padding-left: 8px;
+      a {
+        color: var(--bluePrimaryColor);
+      }
+      a:hover {
+        color: var(--blueSecondaryColor);
+      }
+      &.selected a {
+        color: var(--whiteColor);
+        background-color: var(--bluePrimaryColor);
+        border-radius: 4px;
+        font-weight: bold;
+      }
+    }
+    .index-item {
+      a {
+        font-size: 18px;
+        color: var(--blueSecondaryColor);
+        font-weight: bold;
+      }
+      &.selected a {
+        color: var(--whiteColor);
+        background-color: var(--bluePrimaryColor);
+        border-radius: 4px;
+      }
+    }
+    a {
+      display: block;
+      width: 100%;
+      padding: 0 4px;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
   }
   .entries-sticky-list {
     height: calc(100vh - 82px - 40px);
@@ -47,41 +91,8 @@ const { directory, headings, slug } = Astro.props;
   .entry-wrapper {
     flex: 1;
   }
-  .entries-list .child-item {
-    margin-left: 8px;
-    border-left: 1px solid var(--bluePrimaryColor);
-    padding-left: 8px;
-  }
   .entries-sticky-list > div {
     padding-bottom: 2px;
-  }
-  .entries-list a {
-    display: block;
-    width: 100%;
-    padding: 0 4px;
-    text-decoration: none;
-    box-sizing: border-box;
-  }
-  .entries-list .child-item a {
-    color: var(--bluePrimaryColor);
-  }
-  .entries-list .child-item a:hover {
-    color: var(--blueSecondaryColor);
-  }
-  .entries-list .child-item.selected a {
-    color: var(--whiteColor);
-    background-color: var(--bluePrimaryColor);
-    border-radius: 4px;
-  }
-  .entries-list .index-item a {
-    font-size: 18px;
-    color: var(--blueSecondaryColor);
-    font-weight: bold;
-  }
-  .entries-list .index-item.selected a {
-    color: var(--whiteColor);
-    background-color: var(--bluePrimaryColor);
-    border-radius: 4px;
   }
   @media screen and (max-width: 900px) {
     .multi-entry-wrapper {
@@ -93,6 +104,31 @@ const { directory, headings, slug } = Astro.props;
       width: 100%;
       max-height: 200px;
       margin-bottom: 12px;
+    }
+  }
+  :global(.dark.dark) {
+    .entries-sticky-list {
+      background-color: var(--blackColor);
+    }
+    .entries-list {
+      .index-item {
+        &.selected a {
+          color: var(--blackColor);
+          background-color: var(--blueLightColor);
+        }
+        a {
+          color: var(--blueLightColor);
+        }
+      }
+      .child-item {
+        a:hover {
+          color: var(--blueLightColor);
+        }
+        &.selected a {
+          color: var(--blackColor);
+          background-color: var(--blueLightColor);
+        }
+      }
     }
   }
 </style>

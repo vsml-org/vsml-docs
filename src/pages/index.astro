@@ -1,9 +1,9 @@
 ---
-import { whiteColor } from "../components/DefineVars.astro";
+import { whiteColor, blackColor } from "../components/DefineVars.astro";
 import Layout from "../layouts/MainLayout.astro";
 ---
 
-<style define:vars={{ whiteColor }}>
+<style define:vars={{ whiteColor, blackColor }}>
   center {
     padding: 20px;
     border-radius: 4px;
@@ -13,6 +13,9 @@ import Layout from "../layouts/MainLayout.astro";
     width: 400px;
     max-width: 80vw;
     margin-bottom: 20px;
+  }
+  :global(.dark) center {
+    background-color: var(--blackColor);
   }
 </style>
 
