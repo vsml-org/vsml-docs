@@ -79,10 +79,11 @@ const { directory, headings, slug } = Astro.props;
     }
   }
   .entries-sticky-list {
-    height: calc(100vh - 82px - 40px);
+    /* 画面全体100vhからヘッダの62px、フッタの80px、各marginの20pxを引いている */
+    height: calc(100vh - 62px - 20px - 20px - 80px);
     background-color: var(--whiteColor);
     position: sticky;
-    top: 82px;
+    top: calc(62px + 20px);
     padding: 16px;
     border-radius: 4px;
     box-sizing: border-box;

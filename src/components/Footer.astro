@@ -1,0 +1,44 @@
+---
+import {
+  blueDarkColor,
+  whiteColor,
+  blackColor,
+} from "../components/DefineVars.astro";
+---
+
+<style define:vars={{ whiteColor, blueDarkColor, blackColor }}>
+  .footer {
+    background-color: var(--whiteColor);
+    height: 80px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 0 5px var(--blackColor);
+  }
+  :global(.dark) {
+    .footer {
+      background-color: var(--blueDarkColor);
+    }
+  }
+  .copyright {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;.
+  }
+</style>
+
+<div class="footer">
+  <div class="copyright">
+    <small>Copyright © 2024 VSML Developers All Rights Reserved.</small>
+    <small>
+      This Site Is Maintained On <a
+        href="https://github.com/vsml-org/vsml-docs"
+      >
+        Github
+      </a>.
+    </small>
+  </div>
+</div>
