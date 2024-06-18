@@ -1,6 +1,7 @@
 ---
 import "./mainLayout.css";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import {
   bluePrimaryColor,
   blueSecondaryColor,
@@ -52,9 +53,15 @@ const formattedPageTitle =
       }}
       is:global
     >
+      html {
+        min-height: 100vh;
+      }
       body {
         background-color: var(--grayLightColor);
         color: var(--blackColor);
+        min-height: 100%;
+        position: absolute;
+        width: 100%;
       }
       .dark body {
         background-color: var(--blackColor);
@@ -75,8 +82,9 @@ const formattedPageTitle =
   </head>
   <body>
     <Header />
-    <div style={{ margin: "20px auto 40px", padding: "0 8px", maxWidth }}>
+    <div style={{ margin: "20px auto 100px", padding: "0 8px", maxWidth }}>
       <slot />
     </div>
+    <Footer />
   </body>
 </html>
