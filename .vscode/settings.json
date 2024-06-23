@@ -1,12 +1,13 @@
 {
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    "cSpell.words": [
-        "astro",
-        "astrojs",
-        "borales",
-        "iconify",
-        "tsconfigs",
-        "vsml"
-    ]
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "astro",
+    "astrojs",
+    "borales",
+    "iconify",
+    "Rehype",
+    "tsconfigs",
+    "vsml"
+  ]
 }

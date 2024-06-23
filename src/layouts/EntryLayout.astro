@@ -41,6 +41,10 @@ const { headings } = Astro.props;
     pre {
       padding: 8px;
       border-radius: 4px;
+      margin: 0;
+    }
+    div + pre {
+      border-top-left-radius: 0;
     }
     :not(pre) > code {
       color: var(--blueSecondaryColor);
@@ -58,6 +62,17 @@ const { headings } = Astro.props;
     video {
       width: 100%;
     }
+    .remark-code-title {
+      background-color: var(--blueDarkColor);
+      color: var(--whiteColor);
+      margin: 0;
+      display: inline;
+      border-radius: 4px 4px 0 0;
+      padding: 0 6px;
+    }
+    .remark-code-container {
+      margin: 13px 0;
+    }
   }
   .dark .content-wrapper {
     :not(pre) > code {
@@ -70,6 +85,10 @@ const { headings } = Astro.props;
     }
     a {
       color: var(--bluePrimaryColor);
+    }
+    .remark-code-title {
+      background-color: var(--blackColor);
+      color: var(--whiteColor);
     }
   }
 </style>
