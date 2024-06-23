@@ -62,6 +62,20 @@ const { headings } = Astro.props;
     video {
       width: 100%;
     }
+    summary {
+      background-color: var(--blueDarkColor);
+      padding: 2px 6px;
+      padding-bottom: 4px;
+      color: var(--whiteColor);
+      fill: var(--whiteColor);
+      border-radius: 6px;
+      svg {
+        margin-right: 6px;
+      }
+    }
+    details[open] summary {
+      border-radius: 6px 6px 0 0;
+    }
     .remark-code-title {
       background-color: var(--blueDarkColor);
       color: var(--whiteColor);
@@ -89,6 +103,9 @@ const { headings } = Astro.props;
     .remark-code-title {
       background-color: var(--blackColor);
       color: var(--whiteColor);
+    }
+    summary {
+      background-color: var(--blackColor);
     }
   }
 </style>
