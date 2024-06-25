@@ -82,7 +82,13 @@ const formattedPageTitle =
   </head>
   <body>
     <Header />
-    <div style={{ margin: "20px auto 100px", padding: "0 8px" }}>
+    <div
+      style={{
+        margin: "20px auto 100px",
+        padding: "0 8px",
+        maxWidth,
+      }}
+    >
       <slot />
     </div>
     <Footer />
