@@ -11,7 +11,7 @@ VSML コンバータは[こちら](https://github.com/PigeonsHouse/VSML/releases
 
 このコンバータは VSML ファイルを読み取り、FFmpeg のコマンドを生成して、OS 上の FFmpeg を呼び出すラッパーライブラリとなっていますので、FFmpeg のインストールが必要となります。
 
-[FFmpeg 公式サイト](https://ffmpeg.org/download.html)から FFmpeg の v4.x をダウンロードしてください。
+[FFmpeg 公式サイト](https://ffmpeg.org/download.html)から FFmpeg の v4(v4.3 以上)をダウンロードしてください。
 
 ### VSML コンバータの使用方法
 
