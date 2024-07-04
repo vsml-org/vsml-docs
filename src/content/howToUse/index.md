@@ -7,7 +7,7 @@
 
 ### コンバータのインストール
 
-VSML コンバータは[こちら](https://github.com/PigeonsHouse/VSML/releases/latest)からダウンロードしてください。
+VSML コンバータは[こちら](https://github.com/vsml-org/vsml_converter_old/releases/latest)からダウンロードしてください。
 
 このコンバータは VSML ファイルを読み取り、FFmpeg のコマンドを生成して、OS 上の FFmpeg を呼び出すラッパーライブラリとなっていますので、FFmpeg のインストールが必要となります。
 
