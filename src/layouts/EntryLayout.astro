@@ -78,6 +78,9 @@ const { headings } = Astro.props;
       word-wrap: break-word;
       border: 1px solid var(--grayLightColor);
       padding: 0.5em 1em;
+      &:first-child {
+        word-break: initial;
+      }
     }
     summary {
       background-color: var(--blueDarkColor);
