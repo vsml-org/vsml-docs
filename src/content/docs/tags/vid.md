@@ -21,7 +21,7 @@ title: vid
 
 ```xml
 <cont resolution="1920x1080" fps="30">
-  <img style="duration: 1s" src="./resources/image1.png" />
+  <vid src="./resources/video1.mp4" />
 </cont>
 ```
 
