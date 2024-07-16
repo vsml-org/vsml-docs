@@ -40,6 +40,9 @@
 <p>VSML コンバータは<a href="https://github.com/vsml-org/vsml_converter_old/releases/latest">こちら</a>からダウンロードしてください。</p>
 <p>このコンバータは VSML ファイルを読み取り、FFmpeg のコマンドを生成して、OS 上の FFmpeg を呼び出すラッパーライブラリとなっていますので、FFmpeg のインストールが必要となります。</p>
 <p><a href="https://ffmpeg.org/download.html">FFmpeg 公式サイト</a>から FFmpeg の v4(v4.3 以上)をダウンロードしてください。</p>
+<p>以下のコマンドを実行し、 <code>configuration</code> 内に <code>--enable-libx264</code> のオプションが有効になっている表示が確認できれば、VSML コンバータを利用できます。</p>
+<div class="remark-code-container"><pre style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ffmpeg</span><span style="color:#79B8FF"> -version</span></span>
+<span></span></code></pre></div>
 <h3 id="vsml-コンバータの使用方法">VSML コンバータの使用方法</h3>
 <p>コンバータのコマンドライン引数に VSML ファイルのパスを渡すと、VSML ファイルから動画へ変換を行います。</p>
 <div class="remark-code-container"><pre style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ./main</span><span style="color:#9ECBFF"> video.vsml</span></span>
