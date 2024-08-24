@@ -13,6 +13,12 @@ VSML コンバータは[こちら](https://github.com/vsml-org/vsml_converter_ol
 
 [FFmpeg 公式サイト](https://ffmpeg.org/download.html)から FFmpeg の v4(v4.3 以上)をダウンロードしてください。
 
+以下のコマンドを実行し、 `configuration` 内に `--enable-libx264` のオプションが有効になっている表示が確認できれば、VSML コンバータを利用できます。
+
+```sh
+$ ffmpeg -version
+```
+
 ### VSML コンバータの使用方法
 
 コンバータのコマンドライン引数に VSML ファイルのパスを渡すと、VSML ファイルから動画へ変換を行います。
