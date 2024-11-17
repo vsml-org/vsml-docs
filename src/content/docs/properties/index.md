@@ -32,7 +32,7 @@ VSML ファイルは、以下のように記述します。
 ```xml
 <style>
 prl {
-  height: 100vh;
+  height: 100rh;
 }
 </style>
 ```
@@ -54,7 +54,7 @@ seq {
   font-border-color: red;
 }
 #main-frame {
-  width: 100vh;
+  width: 100rw;
 }
 ```
 
